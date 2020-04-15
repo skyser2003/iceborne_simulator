@@ -28,6 +28,10 @@ class MultiSkill implements Skill {
   get size() {
     return 4;
   }
+
+  static generate<T>(skillClasses: { new(): T; }[]) {
+    return skillClasses.map(cls => new cls());
+  }
 }
 
 class SingleAttackSkill extends SingleSkill {
@@ -38,6 +42,6 @@ class SingleAttackSkill extends SingleSkill {
 
 class MultipleAttackSkill extends MultiSkill {
   constructor() {
-    super([new SingleAttackSkill(), new SingleAttackSkill()]);
+    super(MultiSkill.generate([SingleAttackSkill, SingleAttackSkill]));
   }
 }
