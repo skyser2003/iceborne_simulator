@@ -3,9 +3,18 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 
-Vue.config.productionTip = false;
+async function init() {
+  const res = await fetch("https://mhw-db.com/decorations")
+  const skillData = await res.json();
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+  console.log(skillData);
+
+  Vue.config.productionTip = false;
+
+  new Vue({
+    router,
+    render: h => h(App)
+  }).$mount("#app");
+}
+
+init();
