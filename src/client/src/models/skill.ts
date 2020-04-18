@@ -1,12 +1,12 @@
-class Skill {
-  id = -1;
-  level = -1;
-  skill = -1;
+export interface Skill {
+  id: number;
+  level: number;
+  skill: number;
 }
 
-class Decoration {
-  id = -1;
-  rarity = -1;
-  slot = -1;
-  skills: Skill[] = [];
+export interface Decoration {
+  id: number;
+  rarity: number;
+  slot: number;
+  skills: Skill[];
 }
